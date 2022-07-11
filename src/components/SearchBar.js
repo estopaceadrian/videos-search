@@ -1,14 +1,15 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  state = { keyword: '' };
+  state = { term: '' };
 
   onInputChange = (event) => {
-    this.setState({ keyword: event.target.value });
+    this.setState({ term: event.target.value });
   };
 
   onFormSubmit = (event) => {
     event.preventDefault();
+    this.props.onFormSubmit(this.state.term);
   };
   render() {
     return (
@@ -18,7 +19,7 @@ class SearchBar extends React.Component {
             <label>Image Search</label>
             <input
               type="text"
-              value={this.state.keyword}
+              value={this.state.term}
               onChange={this.onInputChange}
             />
           </div>
